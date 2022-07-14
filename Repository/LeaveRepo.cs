@@ -1,5 +1,8 @@
 ﻿using LmsApi.DataAccessLayer_;
 using LmsApi.Modals;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LmsApi.Repository
 {
@@ -14,7 +17,7 @@ namespace LmsApi.Repository
         {
             if(leaveDbModal!=null)
             {
-                dataAccessLayer_LMS.Add(leaveDbModal);
+                dataAccessLayer_LMS.Leave_Table.Add(leaveDbModal);
                 dataAccessLayer_LMS.SaveChanges();
                 return 1;
             }
@@ -22,6 +25,27 @@ namespace LmsApi.Repository
             {
                 return 0;
             }
+        }
+
+        public ActionResult<EmployeeDbModal> Employedetails(int id)
+        {
+            var b=dataAccessLayer_LMS.Employee_table.Where(x => x.EmployeeId == id).FirstOrDefault();
+            if(b != null && b.EmployeeId==id  )
+            {
+                return b;
+            }
+            else
+            {
+                return null;
+            }
+            
+        }
+
+        public ActionResult<List<LeaveDbModal>> ShowLeavesById(int id)
+        {
+            var c= dataAccessLayer_LMS.Leave_Table.Where(x=> x.EmployeeId==id).ToList();
+            return c;
+            
         }
     }
 }

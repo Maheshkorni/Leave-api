@@ -10,6 +10,8 @@ namespace LmsApi.DataAccessLayer_
 
         }
         public DbSet<LeaveDbModal> Leave_Table { get; set; }
+
+        public DbSet<EmployeeDbModal> Employee_table { get; set; }
     }
 }
 

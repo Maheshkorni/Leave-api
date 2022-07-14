@@ -19,6 +19,37 @@ namespace LmsApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
+            modelBuilder.Entity("LmsApi.Modals.EmployeeDbModal", b =>
+                {
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateJoined")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Department")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LeaveBalance")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ManagerId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("PhoneNumber")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("EmployeeId");
+
+                    b.ToTable("Employee_table");
+                });
+
             modelBuilder.Entity("LmsApi.Modals.LeaveDbModal", b =>
                 {
                     b.Property<int>("leaveId")
@@ -26,11 +57,14 @@ namespace LmsApi.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int?>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ManagerId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("appliedDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("employeeId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("endDate")
                         .HasColumnType("datetime2");
@@ -52,7 +86,18 @@ namespace LmsApi.Migrations
 
                     b.HasKey("leaveId");
 
+                    b.HasIndex("EmployeeId");
+
                     b.ToTable("Leave_Table");
+                });
+
+            modelBuilder.Entity("LmsApi.Modals.LeaveDbModal", b =>
+                {
+                    b.HasOne("LmsApi.Modals.EmployeeDbModal", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId");
+
+                    b.Navigation("Employee");
                 });
 #pragma warning restore 612, 618
         }

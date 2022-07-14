@@ -7,7 +7,10 @@ namespace LmsApi.Helper
     {
         public LeaveMapper()
         {
+            CreateMap<EmployeeDbModal, EmployeeModal>().ReverseMap();
             CreateMap<LeaveDbModal, LeaveModal>().ReverseMap();
+            
         }
+        
     }
 }

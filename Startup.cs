@@ -31,6 +31,7 @@ namespace LmsApi
 
             services.AddControllers();
             services.AddAutoMapper(typeof(Startup));
+            
             services.AddScoped<ILeave, LeaveRepo>();
             services.AddDbContextPool<DataAccessLayer_LMS>(options => options.UseSqlServer(Configuration.GetConnectionString("MYConnection")));
 
