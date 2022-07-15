@@ -1,9 +1,8 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace LmsApi.Modals
 {
-    public class EmployeeModal
+    public class ManagerModal
     {
         [Required]
         public int EmployeeId { get; set; }
@@ -16,15 +15,5 @@ namespace LmsApi.Modals
         [Required]
 
         public long PhoneNumber { get; set; }
-        [Required]
-        [DataType(DataType.Date)]
-        public DateTime DateJoined { get; set; }
-        [Required]
-        public string Department { get; set; }
-        [Required]
-        public int LeaveBalance { get; set; }
-
-
     }
-
 }

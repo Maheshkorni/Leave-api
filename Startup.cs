@@ -1,5 +1,8 @@
 using LmsApi.DataAccessLayer_;
-using LmsApi.Repository;
+using LmsApi.Helper;
+using LmsApi.Repository.Employee;
+using LmsApi.Repository.Leave;
+using LmsApi.Repository.Manager;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -30,9 +33,12 @@ namespace LmsApi
         {
 
             services.AddControllers();
-            services.AddAutoMapper(typeof(Startup));
-            
+           services.AddAutoMapper(typeof(LeaveMapper));
+            //services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<ILeave, LeaveRepo>();
+            services.AddScoped<IManager, ManagerRepo>();
+            services.AddScoped<IEmployee, EmployeeRepo>();
+            services.AddCors(option => option.AddDefaultPolicy(b => b.WithOrigins("*").AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
             services.AddDbContextPool<DataAccessLayer_LMS>(options => options.UseSqlServer(Configuration.GetConnectionString("MYConnection")));
 
             services.AddSwaggerGen(c =>
@@ -55,6 +61,7 @@ namespace LmsApi
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {
