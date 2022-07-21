@@ -1,5 +1,6 @@
 using LmsApi.DataAccessLayer_;
 using LmsApi.Helper;
+using LmsApi.Repository.Crud;
 using LmsApi.Repository.Employee;
 using LmsApi.Repository.Leave;
 using LmsApi.Repository.Manager;
@@ -36,6 +37,7 @@ namespace LmsApi
            services.AddAutoMapper(typeof(LeaveMapper));
             //services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<ILeave, LeaveRepo>();
+            services.AddScoped<ICrud, CrudRepo>();
             services.AddScoped<IManager, ManagerRepo>();
             services.AddScoped<IEmployee, EmployeeRepo>();
             services.AddCors(option => option.AddDefaultPolicy(b => b.WithOrigins("*").AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));

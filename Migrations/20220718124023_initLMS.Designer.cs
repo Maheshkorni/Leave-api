@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LmsApi.Migrations
 {
     [DbContext(typeof(DataAccessLayer_LMS))]
-    [Migration("20220714133050_initLMS")]
+    [Migration("20220718124023_initLMS")]
     partial class initLMS
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,6 +43,9 @@ namespace LmsApi.Migrations
 
                     b.Property<int>("ManagerId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<long>("PhoneNumber")
                         .HasColumnType("bigint");

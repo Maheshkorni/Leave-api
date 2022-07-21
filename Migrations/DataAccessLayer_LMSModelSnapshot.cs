@@ -42,6 +42,9 @@ namespace LmsApi.Migrations
                     b.Property<int>("ManagerId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<long>("PhoneNumber")
                         .HasColumnType("bigint");
 

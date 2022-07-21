@@ -27,8 +27,15 @@ namespace LmsApi.Repository.Manager
         public ActionResult<List<LeaveModal>> ShowLeavesById(int id)
         {
             
-                var c = dataAccessLayer_LMS.Leave_Table.Where(x => x.ManagerId == id).ToList();
+            
+            var c = dataAccessLayer_LMS.Leave_Table.Where(x => x.ManagerId == id).ToList();
+            if (c.Count() > 0 )
+            {
                 return mapper.Map<List<LeaveModal>>(c);
+            }
+            
+            else { return null; }
+                
 
             
         }

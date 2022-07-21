@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using AutoMapper;
 using System.Threading.Tasks;
-using System.Data.Entity;
+//using System.Data.Entity;
+using System.Collections.Generic;
 
 namespace LmsApi.Repository.Employee
 {
@@ -31,6 +32,11 @@ namespace LmsApi.Repository.Employee
                 return null;
             }
 
+        }
+
+        public ActionResult<List<EmployeeModal>> ShowAllEmployee()
+        {
+           return  mapper.Map<List<EmployeeModal>>(dataAccessLayer_LMS.Employee_table.ToList());
         }
     }
 }

@@ -25,5 +25,7 @@ namespace LmsApi.Modals
 
         public int ManagerId { get; set; }
 
+        public string Password { get; set; }
+
     }
 }

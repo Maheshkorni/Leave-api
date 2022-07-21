@@ -6,7 +6,8 @@ namespace LmsApi.Modals
 {
     public class LeaveModal
     {
-       
+        public int leaveId { get; set; }
+
         [Required]
         public int employeeId { get; set; }
         [Required]
@@ -19,6 +20,7 @@ namespace LmsApi.Modals
         [Required]
         [DataType(DataType.Date)]
         public DateTime appliedDate { get; set; }
+        public string status { get; set; }
 
         [Required]
         public string reason { get; set; }

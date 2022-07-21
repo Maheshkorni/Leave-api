@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -18,6 +19,8 @@ namespace LmsApi.Modals
         public DateTime startDate { get; set; }
         public DateTime endDate { get; set; }
         //public int Count{get; set;}
+
+        [DefaultValue("Pending")]
         public string status { get; set; }
         public string reason { get; set; }
         public string leaveType { get; set; }

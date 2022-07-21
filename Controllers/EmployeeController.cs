@@ -3,6 +3,7 @@ using LmsApi.Modals;
 using LmsApi.Repository.Employee;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace LmsApi.Controllers
 {
@@ -32,6 +33,11 @@ namespace LmsApi.Controllers
             {
                 return Ok("Invalid EmployeeId");
             }
+        }
+        [HttpGet("/ShowAllEmployees")]
+        public ActionResult<List<EmployeeModal>> ShowAllEmployees()
+        {
+           return employee.ShowAllEmployee();
         }
     }
 }

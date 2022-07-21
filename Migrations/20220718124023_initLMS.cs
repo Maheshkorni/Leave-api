@@ -18,7 +18,8 @@ namespace LmsApi.Migrations
                     DateJoined = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Department = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LeaveBalance = table.Column<int>(type: "int", nullable: false),
-                    ManagerId = table.Column<int>(type: "int", nullable: false)
+                    ManagerId = table.Column<int>(type: "int", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
