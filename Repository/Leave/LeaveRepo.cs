@@ -21,6 +21,8 @@ namespace LmsApi.Repository.Leave
         {
             if (leaveDbModal != null)
             {
+                var b = dataAccessLayer_LMS.Employee_table.Where(x=>x.EmployeeId == leaveDbModal.EmployeeId).First();
+                leaveDbModal.ManagerId = b.ManagerId;
                 dataAccessLayer_LMS.Leave_Table.Add(leaveDbModal);
                 dataAccessLayer_LMS.SaveChanges();
                 return 1;

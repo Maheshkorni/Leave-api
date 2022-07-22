@@ -26,5 +26,7 @@ namespace LmsApi.Modals
         public string reason { get; set; }
         [Required]
         public string leaveType { get; set; }
+        public string managerComments { get; set; }
+
     }
 }
