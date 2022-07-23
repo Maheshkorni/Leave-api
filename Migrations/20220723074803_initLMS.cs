@@ -19,7 +19,10 @@ namespace LmsApi.Migrations
                     Department = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LeaveBalance = table.Column<int>(type: "int", nullable: false),
                     ManagerId = table.Column<int>(type: "int", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CasualLeaves = table.Column<int>(type: "int", nullable: false),
+                    EarnedLeaves = table.Column<int>(type: "int", nullable: false),
+                    MaternityLeaves = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -34,6 +37,7 @@ namespace LmsApi.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     startDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     endDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Count = table.Column<int>(type: "int", nullable: false),
                     status = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     reason = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     leaveType = table.Column<string>(type: "nvarchar(max)", nullable: true),

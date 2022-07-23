@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LmsApi.Migrations
 {
     [DbContext(typeof(DataAccessLayer_LMS))]
-    [Migration("20220718124023_initLMS")]
+    [Migration("20220723074803_initLMS")]
     partial class initLMS
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,11 +26,17 @@ namespace LmsApi.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
+                    b.Property<int>("CasualLeaves")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DateJoined")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Department")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EarnedLeaves")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -42,6 +48,9 @@ namespace LmsApi.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("ManagerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MaternityLeaves")
                         .HasColumnType("int");
 
                     b.Property<string>("Password")
@@ -61,6 +70,9 @@ namespace LmsApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
 
                     b.Property<int?>("EmployeeId")
                         .HasColumnType("int");

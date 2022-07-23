@@ -18,7 +18,7 @@ namespace LmsApi.Modals
         
         public DateTime startDate { get; set; }
         public DateTime endDate { get; set; }
-        //public int Count{get; set;}
+        public int Count{get; set;}
 
         [DefaultValue("Pending")]
         public string status { get; set; }
@@ -26,6 +26,7 @@ namespace LmsApi.Modals
         public string leaveType { get; set; }
         public string managerComments { get; set; }
         public DateTime appliedDate { get; set; }
+        
 
         public int ManagerId { get; set; }
         public int? EmployeeId { get; set; }

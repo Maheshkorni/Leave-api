@@ -27,5 +27,12 @@ namespace LmsApi.Modals
 
         public string Password { get; set; }
 
+        public int CasualLeaves { get; set; } = 20;
+        public int EarnedLeaves { get; set; } = 20;
+        public int MaternityLeaves { get; set; } = 30;
+
+
+
+
     }
 }

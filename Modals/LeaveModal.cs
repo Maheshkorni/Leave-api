@@ -7,6 +7,8 @@ namespace LmsApi.Modals
     public class LeaveModal
     {
         public int leaveId { get; set; }
+        [Required]
+        public int Count { get; set; }
 
         [Required]
         public int employeeId { get; set; }

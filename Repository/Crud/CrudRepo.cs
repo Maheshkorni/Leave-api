@@ -17,14 +17,52 @@ namespace LmsApi.Repository.Crud
 
         public int ApproveDeny(StatusModal status)
         {
+            var emp = dataAccessLayer_LMS.Employee_table.Where(x => x.EmployeeId == status.EmployeeId).First();
             var b= dataAccessLayer_LMS.Leave_Table.Where(x=>x.leaveId==status.Leaveid).First();
-            if(b!=null && b.leaveId==status.Leaveid && status.status=="APPROVED")
+            if(b!=null && b.leaveId==status.Leaveid && status.status=="APPROVED" )
             {
-                b.status = "APPROVED";
-                b.managerComments = status.managerComments;
-                dataAccessLayer_LMS.Leave_Table.Update(b);
-                dataAccessLayer_LMS.SaveChanges();
-                return 1;
+                if(b.leaveType == "Casual Leave" && emp.CasualLeaves>b.Count)
+                {
+                    b.status = "APPROVED";
+                    b.managerComments = status.managerComments;
+                    dataAccessLayer_LMS.Leave_Table.Update(b);
+                    emp.CasualLeaves -= b.Count;
+                    dataAccessLayer_LMS.Employee_table.Update(emp);
+                    dataAccessLayer_LMS.SaveChanges();
+                    return 1;
+                }
+                
+               
+                else if(b.leaveType== "Earned Leave" && emp.EarnedLeaves > b.Count)
+                {
+                    b.status = "APPROVED";
+                    b.managerComments = status.managerComments;
+                    dataAccessLayer_LMS.Leave_Table.Update(b);
+                    emp.EarnedLeaves -= b.Count;
+                    dataAccessLayer_LMS.Employee_table.Update(emp);
+                    dataAccessLayer_LMS.SaveChanges();
+                    return 1; 
+                }
+
+                else if (b.leaveType == "Maternity Leave" && emp.MaternityLeaves > b.Count)
+                {
+                    b.status = "APPROVED";
+                    b.managerComments = status.managerComments;
+                    dataAccessLayer_LMS.Leave_Table.Update(b);
+                    emp.MaternityLeaves -= b.Count;
+                    dataAccessLayer_LMS.Employee_table.Update(emp);
+                    dataAccessLayer_LMS.SaveChanges();
+                    return 1;
+                }
+                else
+                {
+                    b.status = "Insufficient " + b.leaveType + " Balance";
+                    b.managerComments = status.managerComments;
+                    dataAccessLayer_LMS.Leave_Table.Update(b);
+                    dataAccessLayer_LMS.SaveChanges();
+                    return 0;
+                }
+
             }
             else if (b!=null && b.leaveId==status.Leaveid && status.status=="DENIED")
             {
