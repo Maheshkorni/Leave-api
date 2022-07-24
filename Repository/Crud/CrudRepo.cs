@@ -88,5 +88,18 @@ namespace LmsApi.Repository.Crud
             }
             else { return 0; }
         }
+
+        public int ResetPassword(LoginModal reset)
+        {
+            var b=dataAccessLayer_LMS.Employee_table.Where(x => x.EmployeeId == reset.EmployeeId).First();
+            if(b.EmployeeId==reset.EmployeeId)
+            {
+                b.Password= reset.Password;
+                dataAccessLayer_LMS.Employee_table.Update(b);
+                dataAccessLayer_LMS.SaveChanges();
+                return 1;
+            }
+            else { return 0; }
+        }
     }
 }

@@ -36,6 +36,16 @@ namespace LmsApi.Controllers
                 return Ok("Denied");
             }
         }
+        [HttpPost("/resetpassword")]
+        public ActionResult ResetPassword(LoginModal reset)
+        {
+            int b=crud.ResetPassword(reset);
+            if(b==1)
+            {
+                return Ok("Password Changed");
+            }
+            else { return Ok("Password Change Failed"); }
+        }
 
     }
 }

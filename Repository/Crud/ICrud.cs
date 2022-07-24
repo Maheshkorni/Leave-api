@@ -6,6 +6,8 @@ namespace LmsApi.Repository.Crud
     {
         public int Login(LoginModal login);
 
+        public int ResetPassword(LoginModal reset);
+
         public int ApproveDeny(StatusModal status);
     }
 }
