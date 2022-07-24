@@ -23,7 +23,9 @@ namespace LmsApi.Modals
         public string Department { get; set; }
         [Required]
         public int LeaveBalance { get; set; }
-
+        public int CasualLeaves { get; set; } 
+        public int EarnedLeaves { get; set; } 
+        public int MaternityLeaves { get; set; } 
 
     }
 
